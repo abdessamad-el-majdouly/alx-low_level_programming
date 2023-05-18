@@ -1,23 +1,44 @@
-#include <stdio.h>
+/*
+******************************************************************************
+*                                                                            *
+*                                                 _____  ______    ____  ___ *
+*    5-printf.c                                  /  _  \ |    |    \   \/  / *
+*                                               /  /_\  \|    |     \     /  *
+*    By: Barahmou <hamabarhamou@gmail.com>     /    |    \    |___  /     \  *
+*                                              \____|__  /_______ \/___/\  \ *
+*    Created: 2022-03-10 13:29:43 by Barahmou          \/        \/      \_/ *
+*    Updated: 2022-03-10 13:29:43 by Barahmou                                *
+*                                                                            *
+******************************************************************************
+*/
+
+#include<stdio.h>
 #include <stdlib.h>
+
 /**
- * main - Entry point
- * Description: prints all single digit numbers of base 10
- * starting from 0, followed by a new line.
- * Return: Always 0 (Success)
- */
+* main - Entry point
+*
+* Return: Always 0 (Success)
+*/
+
 int main(void)
 {
-	char ch;
-
-	for (ch = '0'; ch <= '9'; ch++)
+	char ch = 'a';
+	int i = 48;
+	/* your code goes there */
+	while (i < 58)
 	{
-		putchar(ch);
+		putchar(i);
+		i++;
 	}
-	for (ch = 'a'; ch <= 'f'; ch++)
+	i = 0;
+	while (i < 6)
 	{
 		putchar(ch);
+		ch++;
+		i++;
 	}
 	putchar('\n');
 	return (0);
 }
+

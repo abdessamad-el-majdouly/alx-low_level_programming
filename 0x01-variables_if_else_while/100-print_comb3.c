@@ -1,46 +1,49 @@
-#include <stdio.h>
+/*
+******************************************************************************
+*                                                                            *
+*                                                 _____  ______    ____  ___ *
+*    5-printf.c                                  /  _  \ |    |    \   \/  / *
+*                                               /  /_\  \|    |     \     /  *
+*    By: Barahmou <hamabarhamou@gmail.com>     /    |    \    |___  /     \  *
+*                                              \____|__  /_______ \/___/\  \ *
+*    Created: 2022-03-10 13:29:43 by Barahmou          \/        \/      \_/ *
+*    Updated: 2022-03-10 13:29:43 by Barahmou                                *
+*                                                                            *
+******************************************************************************
+*/
+
+#include<stdio.h>
 #include <stdlib.h>
+
 /**
- * main - main block
- * Description: Write a program that prints all possible
- * different combinations of two digits
- * Numbers must be separated by ,, followed by a space
- * The two digits must be different
- * 01 and 10 are considered the same combination of the two digits 0 and 1
- * Print only the smallest combination of two digits
- * Numbers should be printed in ascending order, with two digits
- * You can only use the putchar function
- * (every other function (printf, puts, etc…) is forbidden)
- * You can only use putchar five times maximum in your code
- * You are not allowed to use any variable of type char
- * All your code should be in the main function
- * Return: 0
- */
+* main - Entry point
+*
+* Return: Always 0 (Success)
+*/
+
 int main(void)
 {
-	int c;
-	int d = 0;
-
-	while (d < 10)
+	int u = 49;
+	int d = 48;
+	int position_u = 49;
+	/* your code goes there */
+	while (d <= 56)
 	{
-		c = 0;
-		while (c < 10)
+		while (u <= 57)
 		{
-			if (d != c && d < c)
+			putchar(d);
+			putchar(u);
+			if (d != 56 || u != 57)
 			{
-				putchar('0' + d);
-				putchar('0' + c);
+				putchar(',');
+				putchar(' ');
 
-				if (c + d != 17)
-				{
-					putchar(',');
-					putchar(' ');
-				}
 			}
-
-			c++;
+			u++;
 		}
 		d++;
+		position_u++;
+		u = position_u;
 	}
 	putchar('\n');
 	return (0);

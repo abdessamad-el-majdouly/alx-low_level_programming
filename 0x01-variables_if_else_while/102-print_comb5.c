@@ -1,49 +1,54 @@
-#include <stdio.h>
+/*
+******************************************************************************
+*                                                                            *
+*                                                 _____  ______    ____  ___ *
+*    5-printf.c                                  /  _  \ |    |    \   \/  / *
+*                                               /  /_\  \|    |     \     /  *
+*    By: Barahmou <hamabarhamou@gmail.com>     /    |    \    |___  /     \  *
+*                                              \____|__  /_______ \/___/\  \ *
+*    Created: 2022-03-10 13:29:43 by Barahmou          \/        \/      \_/ *
+*    Updated: 2022-03-10 13:29:43 by Barahmou                                *
+*                                                                            *
+******************************************************************************
+*/
+
+#include<stdio.h>
 #include <stdlib.h>
+
 /**
- * main - main block
- * Description: Write a program that prints all possible
- * different combinations of two digits
- * Return: 0
- */
+* main - Entry point
+*
+* Return: Always 0 (Success)
+*/
+
 int main(void)
 {
-	int c = 0;
-	int f_d;
-	int l_d;
-
-	int c2;
-	int f_d2;
-	int l_d2;
-
-	while (c <= 98)
+	int a;
+	int b;
+	int last;
+	/* your code goes there */
+	a = 0;
+	while (a <= 99)
 	{
-		f_d = (c / 10 + '0');
-		l_d = (c % 10 + '0');
-		c2 = 0;
-		while (c2 <= 99)
+		b = a + 1;
+		while (b <= 99)
 		{
-			f_d2 = (c2 / 10 + '0');
-			l_d2 = (c2 % 10 + '0');
-
-			if (c < c2)
+			last = !(a == 98 && b == 99);
+			putchar(48 + a / 10);
+			putchar(48 + a % 10);
+			putchar(' ');
+			putchar(48 + b / 10);
+			putchar(48 + b % 10);
+			if (last)
 			{
-				putchar(f_d);
-				putchar(l_d);
+				putchar(',');
 				putchar(' ');
-				putchar(f_d2);
-				putchar(l_d2);
-
-				if (c != 98)
-				{
-					putchar(',');
-					putchar(' ');
-				}
 			}
-			c2++;
+			b++;
 		}
-		c++;
+		a++;
 	}
 	putchar('\n');
 	return (0);
 }
+
