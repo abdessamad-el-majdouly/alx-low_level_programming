@@ -1,23 +1,33 @@
-#include <stdio.h>
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 0-memset.c                                   /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-28 09:44:03   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-28 09:44:03 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
+
+#include<stddef.h>
 
 /**
- * array_iterator - executes funct
- * @array: array of elements
- * @size: array's size
- * @action: pointer to function
- * Return: No
+ * array_iterator - a function ...
+ * @array: the tab of integer
+ * @size: the number
+ * @action: the function
+ *
+ * Return: 1 or 0
  */
 
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
-	unsigned int i;
+	size_t i = 0;
 
-	if (array && size && action)
-	{
-		for (i = 0; i < size; i++)
-		{
-			(*action)(array[i]);
-		}
-	}
+	if (action == NULL || array == NULL)
+		return;
+	for (i = 0; i < size; i++)
+		(*action)(array[i]);
 }
 

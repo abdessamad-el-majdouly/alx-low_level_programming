@@ -1,20 +1,27 @@
 #include "main.h"
+
 /**
- * reverse_array - reverse a int array
- * @a: pointer
- * @n: array length
- * Return: void
-*/
+ * reverse_array - a function that takes a pointer to an int as parameter and
+ * @a: the tab integer
+ * @n: the number
+ *
+ * Return: 1 or 0
+ */
 
 void reverse_array(int *a, int n)
 {
-	int i = 0, half;
+	int i = 0, taille, k;
+	int c;
 
-	for (half = n / 2; half > 0; half--, i++)
+	taille = n - 1;
+	k = taille / 2;
+
+	while (i <= k)
 	{
-		a[n - i - 1] += a[i];
-		a[i] = a[n - i - 1] - a[i];
-		a[n - i - 1] = a[n - i - 1] - a[i];
+		c = a[i];
+		a[i] = a[taille];
+		a[taille] = c;
+		i++;
+		taille--;
 	}
 }
-

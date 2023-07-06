@@ -1,41 +1,39 @@
-#include "main.h"
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 0-memset.c                                   /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-28 09:44:03   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-28 09:44:03 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
+
+#include<stdlib.h>
 
 /**
- *create_array - array for prints a string
- *@size: number elements array
- *@c: char
- *Return: pointer
+ * create_array - a function ...
+ * @size: the int
+ * @c: the char
+ *
+ * Return: 1 or 0
  */
 
 char *create_array(unsigned int size, char c)
 {
-	char *buffer;
-	unsigned int position;
+	char *tab;
+	unsigned int i;
 
 	if (size == 0)
-	{
 		return (NULL);
-	}
-
-	/*Define values with malloc*/
-	buffer = (char *) malloc(size * sizeof(c));
-
-	if (buffer == 0)
+	tab = malloc(size * sizeof(char));
+	if (tab != NULL)
 	{
-		return (NULL);
+		for (i = 0; i < size; i++)
+			tab[i] = c;
 	}
 
-	else
-	{
-		position = 0;
-		while (position < size) /*While for array*/
-		{
-			*(buffer + position) = c;
-			position++;
-		}
-
-		return (buffer);
-	}
-
+	return (tab);
 }
 

@@ -1,52 +1,63 @@
-#include "main.h"
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 0-puts_recursion.c                           /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-30 09:46:22   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-30 09:46:22 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
 
 /**
- * last_index - returns the last index of a string (counts the null char)
- * @s: pointer the string
- * Return: int
- */
+* _strlen_recursion - function
+*
+* @s: the chaine
+* Return: Always 0.
+*/
 
-int last_index(char *s)
+int _strlen_recursion(char *s)
 {
-	int n = 0;
 
-	if (*s > '\0')
-		n += last_index(s + 1) + 1;
-
-	return (n);
+	if (*s == '\0')
+		return (0);
+	else
+		return (1 + _strlen_recursion(s + 1));
 }
 
 /**
- * is_palindrome - check if a string is a palindrome
- * @s: string to check
- * Return: 0 or 1
- */
+* palidrone - function
+*
+* @s: chaine of the char
+* @taille: the number
+* @i: the number
+* Return: Always 0.
+*/
+int palidrone(char *s, int taille, int i)
+{
+	if (s[i] != '\0')
+	{
+		if (s[i] != s[taille - i])
+			return (0);
+		else
+			return (palidrone(s, taille, i + 1));
+	}
+	else
+		return (1);
+}
+
+/**
+* is_palindrome - function
+*
+* @s: the chaine of char
+* Return: Always 0.
+*/
 
 int is_palindrome(char *s)
 {
-	int end = last_index(s);
-
-	return (check(s, 0, end - 1, end % 2));
-}
-
-/**
- * check - checker for the palindrome
- * @s: string
- * @start: int moves from right to left
- * @end: int moves from left to right
- * @pair: int
- * Return: 0 or 1
- */
-
-
-int check(char *s, int start, int end, int pair)
-{
-
-	if ((start == end && pair != 0) || (start == end + 1 && pair == 0))
+	if (s[0] == '\0')
 		return (1);
-	else if (s[start] != s[end])
-		return (0);
-	else
-		return (check(s, start + 1, end - 1, pair));
+	return (palidrone(s, _strlen_recursion(s) - 1, 0));
 }
 

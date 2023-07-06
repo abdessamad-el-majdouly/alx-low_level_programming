@@ -1,21 +1,42 @@
+/*
+******************************************************************************
+*                                                                            *
+*                                                 _____  ______    ____  ___ *
+*    5-printf.c                                  /  _  \ |    |    \   \/  / *
+*                                               /  /_\  \|    |     \     /  *
+*    By: Barahmou <hamabarhamou@gmail.com>     /    |    \    |___  /     \  *
+*                                              \____|__  /_______ \/___/\  \ *
+*    Created: 2022-03-10 13:29:43 by Barahmou          \/        \/      \_/ *
+*    Updated: 2022-03-10 13:29:43 by Barahmou                                *
+*                                                                            *
+******************************************************************************
+*/
+
 #include "main.h"
+#include<stdio.h>
 
 /**
- * print_last_digit - prints the last digit of a number
- * @n:  is the int that will use for the argument of the function
- * Return: integer value
+ *print_last_digit - a function that prints the last digit of a number.
+ *@n: The number
+ *
+ *Return: On success 1.
+ *On error, -1 is returned, and errno is set appropriately.
+ * Returns the value of the last digit
  */
-
 int print_last_digit(int n)
 {
-	int last;
+	int a;
 
-	last = n % 10;
+	if (n < 0)
+		n = -n;
 
-	if (last < 0)
-		last = last * -1;
+	a = n % 10;
 
-	_putchar(last + '0');
+	if (a < 0)
+		a = -a;
 
-	return (last);
+	_putchar(a + '0');
+
+	return (a);
 }
+

@@ -1,79 +1,124 @@
 #include "main.h"
 
 /**
- * rev_string - reverse array
- * @n: integer params
- * Return: 0
+ * _strlen - a function that takes a pointer to an int as parameter and
+ * updates the value it points to to 98
+ * @s: chaine of caractere
+ *
+ * Return: 1 or 0
  */
 
-void rev_string(char *n)
+int _strlen(char *s)
 {
 	int i = 0;
-	int j = 0;
-	char temp;
 
-	while (*(n + i) != '\0')
-	{
+	while (s[i])
 		i++;
-	}
-	i--;
-
-	for (j = 0; j < i; j++, i--)
-	{
-		temp = *(n + j);
-		*(n + j) = *(n + i);
-		*(n + i) = temp;
-	}
+	return (i);
 }
 
 /**
- * infinite_add - add 2 numbers together
- * @n1: text representation of 1st number to add
- * @n2: text representation of 2nd number to add
- * @r: pointer to buffer
- * @size_r: buffer size
- * Return: pointer to calling function
+ * _bigger - a function that takes a pointer to an int as parameter and
+ * updates the value it points to to 98
+ * @a: chaine of caractere
+ * @b: chaine of caractere
+ *
+ * Return: the bigger of a and b
  */
+
+int _bigger(int a, int b)
+{
+	if (a <= b)
+		return (b);
+	else
+		return(a);
+}
+
+/**
+ * rev_string - a function that takes a pointer to an int as parameter and
+ * @s: chaine of caractere
+ *
+ * Return: 1 or 0
+ */
+
+void rev_string(char *s)
+{
+	int i = 0, taille, k;
+	char c;
+
+	while (s[i] != '\0')
+		i++;
+
+	i--;
+	taille = i;
+	k = i / 2;
+	i = 0;
+
+	while (i <= k)
+	{
+		c = s[i];
+		s[i] = s[taille];
+		s[taille] = c;
+		i++;
+		taille--;
+	}
+}
+
+
+/**
+  * infinite_add - print numbers chars
+  * @n1: the chaine of caractere
+  * @n2: the chaine of caractere
+  * @r: the chaine of caractere
+  * @size_r: the chaine of caractere
+  * Return: 0
+ **/
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int overflow = 0, i = 0, j = 0, digits = 0;
-	int val1 = 0, val2 = 0, temp_tot = 0;
+	char *bigger_ch, *smaller_ch, ret = '0';
+	int taille_n1, taille_n2;
+	int i = 0, j = 0;
 
-	while (*(n1 + i) != '\0')
-		i++;
-	while (*(n2 + j) != '\0')
-		j++;
-	i--;
-	j--;
-	if (j >= size_r || i >= size_r)
-		return (0);
-	while (j >= 0 || i >= 0 || overflow == 1)
+	taille_n1 = _strlen(n1);
+	taille_n2 = _strlen(n2);
+	
+	if (taille_n1 >= taille_n2)
 	{
-		if (i < 0)
-			val1 = 0;
-		else
-			val1 = *(n1 + i) - '0';
-		if (j < 0)
-			val2 = 0;
-		else
-			val2 = *(n2 + j) - '0';
-		temp_tot = val1 + val2 + overflow;
-		if (temp_tot >= 10)
-			overflow = 1;
-		else
-			overflow = 0;
-		if (digits >= (size_r - 1))
-			return (0);
-		*(r + digits) = (temp_tot % 10) + '0';
-		digits++;
-		j--;
-		i--;
+		bigger_ch = n1;
+		smaller_ch = n2;
 	}
-	if (digits == size_r)
+	else 
+	{
+		bigger_ch = n2;
+		smaller_ch = n1;
+	}
+	
+	if (size_r < _bigger(taille_n1, taille_n2))
 		return (0);
-	*(r + digits) = '\0';
-	rev_string(r);
-	return (r);
-}
+	else
+	{
+		rev_string(bigger_ch);
+		rev_string(smaller_ch);
+		while(bigger_ch[j])
+		{
+			if(smaller_ch[i])
+			{
+				r[i] = (((smaller_ch[i] - '0') + (bigger_ch[i] - '0') + (ret - '0')) % 10) + '0';
+				ret = (((smaller_ch[i] - '0') + (bigger_ch[i] - '0') + (ret - '0')) / 10) + '0';
+			}
+			else
+			{
+				r[i] = (((bigger_ch[i] - '0') + (ret - '0')) % 10) + '0';
+				ret = (((bigger_ch[i] - '0') + ret) / 10);
+			}
 
+			i++;
+		}
+		rev_string(r);
+		rev_string(bigger_ch);
+		rev_string(smaller_ch);
+		return (r);
+
+	}
+}

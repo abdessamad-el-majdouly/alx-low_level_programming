@@ -1,29 +1,47 @@
-#include "main.h"
+#include<stdio.h>
 
 /**
- * *rot13 - encodes a string using rot13.
- * @s: int type array pointer
- * Return: encoded
+ * remplace13 - a function ...
+ * @b: char
+ *
+ * Return: char
  */
 
-char *rot13(char *s)
+char remplace13(char b)
 {
-	int i, ii;
-	char input[] =  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char output[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-
-	for (i = 0; s[i] != '\0'; i++)
+	/*ASCII 65 is A and 90 is Z*/
+	if ((b > 64) && (b < 91))
 	{
-		for (ii = 0; ii < 54; ii++)
-		{
-			if (((s[i] <= 'z' && s[i] >= 'a') || (s[i] <= 'Z' && s[i] >= 'A'))
-			&& s[i] == input[ii])
-			{
-				s[i] = output[ii];
-				break;
-			}
-		}
+		b = ((b - 65 + 13) % 26) + 65;
 	}
-	return (s);
+
+	/*ASCII 97 is a and 122 is z*/
+	if ((b > 96) && (b < 123))
+	{
+		b = ((b - 97 + 13) % 26) + 97;
+	}
+
+	return (b);
+}
+
+/**
+ * rot13 - a function ...
+ * @str: the chaine of caractere
+ *
+ * Return: str
+ */
+
+char	*rot13(char *str)
+{
+	int i = 0;
+	/*char alp[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";*/
+	/*char cde[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";*/
+
+	while (str[i])
+	{
+		str[i] = remplace13(str[i]);
+		i++;
+	}
+	return (str);
 }
 

@@ -1,32 +1,29 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * more_numbers - prints more numbers
- * Return:void
+ * more_numbers - a function print a number.
+ *
  */
 
 void more_numbers(void)
 {
-	char n, c;
-	int i = 0;
+	int i, k;
 
-
-	while (i < 10)
+	for (k = 1; k <= 10; k++)
 	{
-		for (n = 0; n <= 14; n++)
+		/* Execution du code print_most_number */
+
+		for (i = 0; i <= 14; i++)
 		{
-			c = n;
-			if (n > 9)
+			if (i <= 9)
+				_putchar(i + '0');
+			else
 			{
-				_putchar('1');
-				c = n % 10;
+				_putchar(i / 10 + '0');
+				_putchar(i % 10 + '0');
 			}
-
-			_putchar('0' + c);
 		}
-
-		_putchar('\n');
-		i++;
+		system("echo \"\"");
 	}
-
 }

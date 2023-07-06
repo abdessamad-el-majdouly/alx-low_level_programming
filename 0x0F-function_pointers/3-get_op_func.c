@@ -1,15 +1,25 @@
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 0-memset.c                                   /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-28 09:44:03   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-28 09:44:03 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
+
 #include "3-calc.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include <stddef.h>
 
 /**
- * get_op_func - get an operation
- * @s: operator
- * Return: No
+ * get_op_func - a function ...
+ * @s: the chaine
+ *
+ * Return: 1 or 0
  */
-
-int (*get_op_func(char *s))(int, int)
+int (*get_op_func(char *s))(int a, int b)
 {
 	op_t ops[] = {
 		{"+", op_add},
@@ -21,15 +31,11 @@ int (*get_op_func(char *s))(int, int)
 	};
 	int i = 0;
 
-	while (ops[i].op)
+	while (i < 5)
 	{
-		if (strcmp(s, ops[i].op) == 0)
-		{
+		if (*ops[i].op == *s)
 			return (ops[i].f);
-		}
 		i++;
 	}
-	printf("Error\n");
-	exit(99);
+	return (NULL);
 }
-

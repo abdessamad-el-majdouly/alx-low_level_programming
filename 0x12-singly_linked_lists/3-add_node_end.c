@@ -1,44 +1,64 @@
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 2-add_node.c                               /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-28 09:44:03   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-28 09:44:03 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
+
+#include <stdio.h>
 #include "lists.h"
+#include <stdlib.h>
+#include <string.h>
+
 /**
- * add_node_end - Add a new node at the end of a list.
- * @head: Address of the first node of a list.
- * @str: Address of the string to insert into the new node.
- * Return: Address of the new node.
- **/
+* _strlen_recursion - function
+*
+* @s: the chaine
+* Return: Always 0.
+*/
+
+int _strlen_recursion(const char *s)
+{
+
+	if (*s == '\0')
+		return (0);
+	else
+		return (1 + _strlen_recursion(s + 1));
+}
+
+/**
+ * add_node_end - a function ...
+ * @head: the list
+ * @str: the chaine
+ *
+ * Return: 1 or 0
+ */
 
 list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *temp, *temp2;
-	unsigned int length = 0;
+	list_t *new, *ptr = *head;
 
-	if (str == NULL)
+	new =  malloc(sizeof(list_t));
+	if (new == NULL)
 		return (NULL);
 
-	temp = malloc(sizeof(list_t));
-	if (temp == NULL)
-		return (NULL);
+	new->str = strdup(str);
+	new->len = _strlen_recursion(str);
+	new->next = NULL;
 
-	temp->str = strdup(str);
-	if (temp->str == NULL)
+	if (ptr == NULL)
 	{
-		free(temp);
-		return (NULL);
+		*head = new;
+		return (*head);
 	}
-	while (str[length])
-		length++;
-	temp->len = length;
-	temp->next = NULL;
-
-	if (*head == NULL)
-	{
-		*head = temp;
-		return (temp);
-	}
-
-	temp2 = *head;
-	while (temp2->next)
-		temp2 = temp2->next;
-	temp2->next = temp;
-	return (temp);
+	while (ptr->next != NULL)
+		ptr = ptr->next;
+	ptr->next = new;
+	return (new);
 }
 

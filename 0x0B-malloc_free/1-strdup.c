@@ -1,33 +1,43 @@
-#include <stdlib.h>
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 0-memset.c                                   /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-28 09:44:03   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-28 09:44:03 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
+
+#include<stdlib.h>
 
 /**
- * _strdup - copy
- * @str: pointer to string
- * Return: pointer
+ * _strdup - a function ...
+ * @str: the chaine
+ *
+ * Return: 1 or 0
  */
 
-char *_strdup(char *str)
+char  *_strdup(char *str)
 {
-	char *s;
-	int i = 0, j;
+	char *src;
+	int len = 0, i = 0;
 
-	if (!str)
+	if (str == NULL)
 		return (NULL);
-
-	while (*(str + i))
-		i++;
-	i++;
-	s = malloc(sizeof(char) * i);
-
-	if (s == NULL)
+	while (str[len])
+		len++;
+	src = malloc((len + 1) * sizeof(char));
+	if (src != NULL)
 	{
-		return (NULL);
+		while (str[i])
+		{
+			src[i] = str[i];
+			i++;
+		}
+		src[i] = '\0';
 	}
-
-	for (j = 0; j <= i; j++)
-	{
-		s[j] = str[j];
-	}
-	return (s);
+	return (src);
 }
 

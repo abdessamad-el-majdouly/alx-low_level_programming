@@ -8,11 +8,10 @@
  *
  * Return: Always 0 (Success)
  */
-
 int main(void)
 {
-	int i, sum, n;
 	int pass[100];
+	int i, sum, n;
 
 	sum = 0;
 

@@ -1,18 +1,39 @@
-#include "main.h"
+#include<stdio.h>
+
 /**
- * *string_toupper - capitalize a string
- * @str: pointer
- * Return: capitalzied string
-*/
+ * upper - a function ...
+ * @c: the caractere
+ *
+ * Return: 1 or 0.
+ */
 
-char *string_toupper(char *str)
+char	upper(char c)
 {
-	int i;
+	char	car;
 
-	for (i = 0; str[i] != '\0'; i++)
+	if (c >= 'a' && c <= 'z')
+		car = c + 'A' - 'a';
+	else
+		car = c;
+	return (car);
+}
+
+/**
+ * string_toupper - a function ...
+ * @str: the chaine of caractere
+ *
+ * Return: str
+ */
+
+char	*string_toupper(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		if (str[i] <= 'z' && str[i] >= 'a')
-			str[i] -= 32;
+		str[i] = upper(str[i]);
+		i++;
 	}
 	return (str);
 }

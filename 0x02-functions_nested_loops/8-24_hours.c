@@ -1,50 +1,51 @@
+/*
+******************************************************************************
+*                                                                            *
+*                                                 _____  ______    ____  ___ *
+*    5-printf.c                                  /  _  \ |    |    \   \/  / *
+*                                               /  /_\  \|    |     \     /  *
+*    By: Barahmou <hamabarhamou@gmail.com>     /    |    \    |___  /     \  *
+*                                              \____|__  /_______ \/___/\  \ *
+*    Created: 2022-03-10 13:29:43 by Barahmou          \/        \/      \_/ *
+*    Updated: 2022-03-10 13:29:43 by Barahmou                                *
+*                                                                            *
+******************************************************************************
+*/
+
 #include "main.h"
+#include<stdio.h>
 
 /**
- * jack_bauer - prints every minute of the day of Jack Bauer
- * Return:void
+ *jack_bauer - a function that prints every minute of the day of Jack Bauer,
+ *starting from 00:00 to 23:59.
+ *
+ *Return: On success 1.
  */
-
 void jack_bauer(void)
 {
+	int a = 0, b = 0, c = 0, d = 0;
+	int n = 9;
 
-int h1;
-int h2;
-int m1;
-int m2;
-int a = 9;
-
-h2 = 0;
-while (h2 <= 2)
-{
-	if (h2 == 2)
+	for (a = 0; a <= 2 ; a++)
 	{
-		/*Restrain to 23h, not 29*/
-		a = 3;
-	}
-	h1 = 0;
-	while (h1 <= a)
-	{
-		m2 = 0;
-		while (m2 <= 5)
+		if (a == 2)
+			n = 3;
+		for (b = 0; b <= n; b++)
 		{
-			m1 = 0;
-			while (m1 <= 9)
+			for (c = 0; c <= 5; c++)
 			{
-				_putchar('0' + h2);
-				_putchar('0' + h1);
-				_putchar(':');
-				_putchar('0' + m2);
-				_putchar('0' + m1);
-				_putchar('\n');
-				m1++;
+				for (d = 0; d <= 9; d++)
+				{
+					_putchar(a + '0');
+					_putchar(b + '0');
+					_putchar(':');
+					_putchar(c + '0');
+					_putchar(d + '0');
+					_putchar('\n');
+				}
 			}
-			m2++;
-		}
-		h1++;
-	}
-	h2++;
-}
 
+		}
+	}
 }
 

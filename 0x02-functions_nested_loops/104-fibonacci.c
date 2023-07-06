@@ -1,10 +1,28 @@
-#include <stdio.h>
+/*
+******************************************************************************
+*                                                                            *
+*                                                 _____  ______    ____  ___ *
+*    5-printf.c                                  /  _  \ |    |    \   \/  / *
+*                                               /  /_\  \|    |     \     /  *
+*    By: Barahmou <hamabarhamou@gmail.com>     /    |    \    |___  /     \  *
+*                                              \____|__  /_______ \/___/\  \ *
+*    Created: 2022-03-10 13:29:43 by Barahmou          \/        \/      \_/ *
+*    Updated: 2022-03-10 13:29:43 by Barahmou                                *
+*                                                                            *
+******************************************************************************
+*/
+
+#include "main.h"
+#include<stdio.h>
+
 /**
- * main - main block
- * Description: computes and prints the sum of all the multiples of 3 or
- * 5 below 1024 (excluded), followed by a new line
- * Return: 0
+ * main - fibonacci <3
+ *
+ * Purpose - no hardcode
+ *
+ * Return:  (Success)
  */
+
 int main(void)
 {
 	unsigned long int i;
@@ -42,3 +60,4 @@ int main(void)
 	printf("\n");
 	return (0);
 }
+

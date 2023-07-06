@@ -1,28 +1,22 @@
 #include "main.h"
-
-#include <stdio.h>
 #include <stdlib.h>
 
-int _putchar(char c);
-
 /**
- * print_number - prints numbers
- * @n: number to be printed
- * Return:void
+ * print_number - a function print a number.
+ * @n : the number
+ *
  */
+
 
 void print_number(int n)
 {
+	unsigned int n1;
 
-	unsigned int n1 = 0;
-
-	if  (n < 0)
+	if (n < 0)
 	{
 		n1 = -n;
 		_putchar('-');
-	}
-
-	else
+	} else
 	{
 		n1 = n;
 	}

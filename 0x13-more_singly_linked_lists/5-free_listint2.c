@@ -1,22 +1,38 @@
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 4-free_listint.c                             /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-28 09:44:03   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-28 09:44:03 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
+
 #include "lists.h"
 #include <stdlib.h>
 
 /**
- * free_listint2 - Frees a list.
- * @head: Address of the first node of a list.
- **/
+ * free_listint2 - a function ...
+ * @head: the list
+ *
+ * Return: 1 or 0
+ */
 
 void free_listint2(listint_t **head)
 {
-	listint_t *temp;
+	listint_t *ptr, *tmp;
 
 	if (head == NULL)
 		return;
-	while (*head != NULL)
+	ptr = *head;
+	while (ptr != NULL)
 	{
-		temp = (*head)->next;
-		free(*head);
-		*head = temp;
+		tmp =  ptr;
+		ptr = ptr->next;
+		free(tmp);
 	}
+	*head = NULL;
 }
 

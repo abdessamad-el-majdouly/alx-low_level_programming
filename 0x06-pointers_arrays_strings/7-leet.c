@@ -1,29 +1,44 @@
-#include "main.h"
+#include<stdio.h>
 
 /**
- * leet - transform to leet
- * @s: char array string type
- * Return: s transformed
+ * car - a function ...
+ * @str1: the chaine of caractere
+ * @str2: the chaine of caractere
+ * @c: the caractere
+ *
+ * Return: char
  */
 
-char *leet(char *s)
+char car(char *str1, char *str2, char c)
 {
-	int i, ii;
-	char s1[] = "aeotl";
-	char S1[] = "AEOTL";
-	char s2[] = "43071";
+	int i;
 
-	for (i = 0; s[i] != '\0'; i++)
+	for (i = 0; i <= 9; i++)
 	{
-		for (ii = 0; ii < 5; ii++)
-		{
-			if (s[i] == s1[ii] || s[i] == S1[ii])
-			{
-				s[i] = s2[ii];
-				break;
-			}
-		}
+		if (c == str1[i])
+			return (str2[i]);
 	}
-	return (s);
+	return (c);
+}
+
+/**
+ * leet - a function ...
+ * @str: the chaine of caractere
+ *
+ * Return: str
+ */
+
+char	*leet(char *str)
+{
+	char alp1[] = "aAeEoOtTlL";
+	char alp2[] = "4433007711";
+	int i = 0;
+
+	while (str[i])
+	{
+		str[i] = car(alp1, alp2, str[i]);
+		i++;
+	}
+	return (str);
 }
 

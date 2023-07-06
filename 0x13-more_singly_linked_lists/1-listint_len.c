@@ -1,22 +1,38 @@
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 0-print_listint.c                            /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-28 09:44:03   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-28 09:44:03 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
+
+#include <stdio.h>
 #include "lists.h"
 
 /**
- * listint_len - Calculate the number of elements.
- * @h: Pointer to a list.
- * Return: Integer.
- **/
+ * listint_len - a function ...
+ * @h: the list
+ *
+ * Return: 1 or 0
+ */
 
 size_t listint_len(const listint_t *h)
 {
-	const listint_t *tp;
-	unsigned int cnr = 0;
+	const listint_t *ptr;
+	int cpt = 0;
 
-	tp = h;
-	while (tp)
+	if (h == NULL)
+		return (0);
+	ptr = h;
+	while (ptr != NULL)
 	{
-		cnr++;
-		tp = tp->next;
+		ptr = ptr->next;
+		cpt++;
 	}
-	return (cnr);
+	return (cpt);
 }
 

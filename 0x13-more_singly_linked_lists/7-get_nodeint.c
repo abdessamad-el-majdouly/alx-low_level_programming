@@ -1,25 +1,37 @@
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 7-get_nodeint.c                              /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-28 09:44:03   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-28 09:44:03 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
+
 #include "lists.h"
-#include <stdlib.h>
-
+#include <stdio.h>
 /**
- * get_nodeint_at_index - Find a node in a list.
- * @head: Address of the first node in a list.
- * @index: Position of a the node to find (starting from 0).
- * Return: Node address.
- **/
-
+ * get_nodeint_at_index - prints all the elements of a linked list
+ * @head: linked list of type listint_t to print
+ * @index: the number
+ *
+ * Return: number of nodes
+ */
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-	unsigned int y = 0;
+	unsigned int num = 0;
+	listint_t *ptr = head;
 
-	if (head == NULL)
-		return (NULL);
-	for (y = 0; y < index; y++)
+	while (num != index && ptr != NULL)
 	{
-		head = head->next;
-		if (head == NULL)
-			return (NULL);
+		num++;
+		ptr = ptr->next;
 	}
-	return (head);
-}
 
+	if (ptr == NULL)
+		return (NULL);
+	else
+		return (ptr);
+}

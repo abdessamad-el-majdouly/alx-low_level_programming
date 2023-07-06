@@ -1,40 +1,37 @@
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 0-memset.c                                   /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-28 09:44:03   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-28 09:44:03 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
+
 #include "main.h"
-
+#include <stdlib.h>
 /**
- * _memset - copy char
- * @s: string
- * @b: input
- * @n: bytes
- * Return: string
- */
-char *_memset(char *s, char b, unsigned int n)
-{
-	unsigned int i;
-
-	for (i = 0; i < n; i++)
-	{
-		s[i] = b;
-	}
-	return (s);
-}
-
-/**
- * _calloc - allocates memory for an array using malloc
- * @nmemb: n elements
- * @size: bytes
- * Return: pointer
+ * *_calloc - call
+ * @nmemb: n
+ * @size: size
+ * Return: 0
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	void *p;
+	char *arr;
+	unsigned int i;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
-	p = malloc(nmemb * size);
 
-	if (p == NULL)
+	arr = malloc(nmemb * size);
+	if (arr == NULL)
 		return (NULL);
-	_memset(p, 0, (nmemb * size));
-	return (p);
-}
 
+	for (i = 0; i < (nmemb * size); i++)
+		arr[i] = 0;
+
+	return (arr);
+}

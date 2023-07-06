@@ -1,34 +1,48 @@
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 2-add_node.c                               /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-28 09:44:03   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-28 09:44:03 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
+
+#include <stdio.h>
 #include "lists.h"
 #include <stdlib.h>
+#include <string.h>
+
 
 /**
- * add_nodeint_end - Add a new node at the end of a list.
- * @head: Address of the first node of a list.
- * @n: Integer to insert in the new node.
- * Return: Address of the new node.
- **/
+ * add_nodeint_end - a function ...
+ * @head: the list
+ * @n: the chaine
+ *
+ * Return: 1 or 0
+ */
 
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
-	listint_t *temp, *temp2;
+	listint_t *new, *ptr = *head;
 
-	temp = malloc(sizeof(listint_t));
-	if (temp == NULL)
+	new =  malloc(sizeof(listint_t));
+	if (new == NULL)
 		return (NULL);
 
-	temp->n = n;
-	temp->next = NULL;
+	new->n = n;
+	new->next = NULL;
 
-	if (*head == NULL)
+	if (ptr == NULL)
 	{
-		*head = temp;
-		return (temp);
+		*head = new;
+		return (*head);
 	}
-
-	temp2 = *head;
-	while (temp2->next)
-		temp2 = temp2->next;
-	temp2->next = temp;
-	return (temp);
+	while (ptr->next != NULL)
+		ptr = ptr->next;
+	ptr->next = new;
+	return (new);
 }
 

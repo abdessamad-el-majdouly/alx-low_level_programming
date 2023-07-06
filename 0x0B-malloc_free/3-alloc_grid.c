@@ -1,47 +1,54 @@
-#include <stdio.h>
-#include <stdlib.h>
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 0-memset.c                                   /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-28 09:44:03   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-28 09:44:03 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
+
+#include<stdlib.h>
+#include<stdio.h>
+
 /**
- * alloc_grid - prints a grid of integers
- * @width: width of the grid
- * @height: height of the grid
+ * alloc_grid - a function ...
+ * @width: the chaine
+ * @height:
  *
- * Return: pointer..
+ * Return: 1 or 0
  */
+
 int **alloc_grid(int width, int height)
 {
-int **s, r, c;
+	int **tableau2d;
+	int i, j;
 
-	if (width <= 0 || height <= 0)
-	{
+	if (width == 0 || height == 0)
 		return (NULL);
-	}
+	tableau2d = malloc(height * sizeof(int *));
 
-	s = malloc(sizeof(int *) * height);
-	if (s == NULL)
-	{
+	if (tableau2d == NULL)
 		return (NULL);
-	}
 
-	for (r = 0; r < height; r++)
+	for (i = 0; i < height; ++i)
 	{
-		s[r] = malloc(sizeof(int) * width);
-
-		if (s[r] == NULL)
+		tableau2d[i] = malloc(width * sizeof(int));
+		if (tableau2d[i] == NULL)
 		{
-			for (; r >= 0; r--)
-			{
-				free(s[r]);
-			}
-			free(s);
+			for (; i >= 0; i--)
+				free(tableau2d[i]);
+			free(tableau2d);
 			return (NULL);
 		}
-
-		for (c = 0; c <= width; c++)
-		{
-			s[r][c] = 0;
-		}
 	}
-	return (s);
 
+	for (i = 0; i < height; ++i)
+		for (j = 0; j < width; j++)
+			tableau2d[i][j] = 0;
+
+	return (tableau2d);
 }
 

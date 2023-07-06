@@ -1,28 +1,44 @@
-#include <stdio.h>
+/*
+******************************************************************************
+*                                                                            *
+*                                                 _____  ______    ____  ___ *
+*    5-printf.c                                  /  _  \ |    |    \   \/  / *
+*                                               /  /_\  \|    |     \     /  *
+*    By: Barahmou <hamabarhamou@gmail.com>     /    |    \    |___  /     \  *
+*                                              \____|__  /_______ \/___/\  \ *
+*    Created: 2022-03-10 13:29:43 by Barahmou          \/        \/      \_/ *
+*    Updated: 2022-03-10 13:29:43 by Barahmou                                *
+*                                                                            *
+******************************************************************************
+*/
+
+#include "main.h"
+#include<stdio.h>
+
 /**
- * main - main block
- * Description: computes and prints the sum of all the multiples of 3 or
- * 5 below 1024 (excluded), followed by a new line
- * Return: 0
+ * main - Prints first 50 Fibonacci numbers, starting with 1 and 2,
+ *        separated by a comma followed by a space.
+ *
+ * Return: Always 0.
  */
 int main(void)
 {
-	int i = 0;
-	long int a = 0, b = 1, next;
+	int count;
+	unsigned long fib1 = 0, fib2 = 1, sum;
 
-	while (i < 50)
+	for (count = 0; count < 50; count++)
 	{
-		next = a + b;
-		a = b;
-		b = next;
-		printf("%lu", next);
+		sum = fib1 + fib2;
+		printf("%lu", sum);
 
-		if (i < 49)
-		{
+		fib1 = fib2;
+		fib2 = sum;
+
+		if (count == 49)
+			printf("\n");
+		else
 			printf(", ");
-		}
-		i++;
 	}
-	putchar('\n');
+
 	return (0);
 }

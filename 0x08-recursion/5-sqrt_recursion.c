@@ -1,32 +1,45 @@
-#include "main.h"
-
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 0-puts_recursion.c                           /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-30 09:46:22   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-30 09:46:22 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
+#include<stdio.h>
 /**
- * _sqrt_recursion - find natural square root
- * @n: int
- * Return: int
+ * _sqrt - function
+ * @n: the number
+ * @i: the number
+ * Return: Always 0
  */
 
-int _sqrt_recursion(int n)
+int _sqrt(int n, int i)
 {
-	return (square(n, 1));
+	if (i * i >  n)
+		return (-1);
+	if (i * i == n)
+		return (i);
+	else
+		return (_sqrt(n, i + 1));
 }
 
 /**
- * square - find square root
- * @n: int to find square root
- * @val: square root
- * Return: int
- */
+* _sqrt_recursion - function
+*
+* @n: the number
+* Return: Always 0.
+*/
 
-int square(int n, int val)
+int _sqrt_recursion(int n)
 {
-
-	if (val * val == n)
-		return (val);
-	else if (val * val < n)
-		return  (square(n, val + 1));
-	else
+	if (n < 0)
 		return (-1);
-
+	if (n == 0 || n == 1)
+		return (n);
+	return (_sqrt(n, 0));
 }
 

@@ -1,32 +1,48 @@
-#include "main.h"
-#include <stdio.h>
+/*****************************************************************************/
+/*                                                                           */
+/*                                               _____  ______    ____  ___  */
+/* 0-puts_recursion.c                           /  _  \ |    |    \   \/  /  */
+/*                                             /  /_\  \|    |     \     /   */
+/* By: Barahmou   <hamabarhamou@gmail.com>    /    |    \    |___  /     \   */
+/*                                            \____|__  /_______ \/___/\  \  */
+/* Created: 2022-03-30 09:46:22   $Barahmou           \/        \/      \_/  */
+/* Updated: 2022-03-30 09:46:22 by Barahmou                                  */
+/*                                                                           */
+/*****************************************************************************/
+
 /**
- * is_prime_number - check if n is a prime number
- * @n: int
- * Return: 0 or 1
+ * prime - function
+ * @n: the number
+ * @i: the number
+ * Return: Always 0
  */
 
-
-int is_prime_number(int n)
+int prime(int n, int i)
 {
-	return (check_prime(n, 2));
+	if (i > 1)
+	{
+		if (n % i == 0)
+			return (0);
+		else
+			return (prime(n, i - 1));
+	}
+	else
+		return (1);
 }
 
 /**
- * check_prime - check all number < n if they can divide it
- * @n: int
- * @resp: int
- * Return: int
- */
+* is_prime_number - function
+*
+* @n: the number
+* Return: Always 0.
+*/
 
-int check_prime(int n, int resp)
+int is_prime_number(int n)
 {
-
-	if (resp >= n && n > 1)
-		return (1);
-	else if (n % resp == 0 || n <= 1)
+	if (n < 0)
 		return (0);
-	else
-		return (check_prime(n, resp + 1));
+	if (n == 1)
+		return (0);
+	return (prime(n, n - 1));
 }
 
