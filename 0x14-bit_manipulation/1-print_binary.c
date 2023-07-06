@@ -11,21 +11,23 @@
  */
 void print_binary(unsigned long int n)
 {
-	int bit =  sizeof(n) * 8, printed = 0;
+int i, count = 0;
+	unsigned long int current;
 
-	while (bit)
+	for (i = 63; i >= 0; i--)
 	{
-		
-		if (n & 1L << --bit)
-		{	
-			_putchar('1');
-			printed++;
-		}
-		else if (printed)
-			_putchar('0');
-		
-	}
+		current = n >> i;
 
-	if (!printed)
+		if (current & 1)
+		{
+			_putchar('1');
+			count++;
+		}
+		else if (count)
+			_putchar('0');
+	}
+	if (!count)
 		_putchar('0');
+
+
 }
