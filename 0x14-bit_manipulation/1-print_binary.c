@@ -11,20 +11,21 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int mask = ~(~0U >> 1);
-	unsigned long int i = 0;
+	int bit =  sizeof(n) * 8, printed = 0;
 
-	while (mask > 0)
+	while (bit)
 	{
-		/**
-		 *if (i != 0 && i % 4 == 0)
-		 *	putchar(' ');
-		 */
-
-		putchar((n & mask) ? '1' : '0');
-		mask >>= 1;
-		++i;
+		
+		if (n & 1L << --bit)
+		{	
+			_putchar('1');
+			printed++;
+		}
+		else if (printed)
+			_putchar('0');
+		
 	}
 
-	putchar('\n');
+	if (!printed)
+		_putchar('0');
 }
