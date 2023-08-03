@@ -7,11 +7,11 @@
  *
  * Return: The value of the bit at the specified index or -1 if an error occurred.
  */
-int get_bit(unsigned long int n, unsigned int index)
-{
-    if (index >= sizeof(unsigned long int) * 8)
-        return -1; // Error: index is out of range
-
-    unsigned long int mask = 1UL << index;
-    return (n & mask) != 0;
+int get_bit(unsigned long int n, unsigned int index) {
+  /* Check if the index is valid. */
+  if (index < 0 || index >= 64) {
+    return -1;
+  }
+  unsigned int mask = 1 << index;
+  return (n & mask) > 0;
 }
