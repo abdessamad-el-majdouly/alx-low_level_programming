@@ -1,14 +1,14 @@
-#include "main.h"
-#include <stdlib.h>
-#include <stdio.h>
-
-
 /**
- * get_endianness - checks if a machine is little or big endian
- * Return: 0 for big, 1 for little
- */
-int  get_endianness(void)
+ * get_endianness - a function that checks if
+ *                  architecture is little endian
+ *                  or big endian
+ *
+ * Return: 1 if little endian or 0 if big endian
+*/
+int get_endianness(void)
 {
-	unsigned long int n = 1;
-	return (*(char *)&n);
+	unsigned int num = 1;
+	char *c = (char *) &num;
+
+	return (c[0]);
 }
