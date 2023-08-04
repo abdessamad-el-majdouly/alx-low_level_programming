@@ -1,3 +1,8 @@
+#include "main.h"
+#include <stdlib.h>
+#include <stdio.h>
+
+
 /**
  * get_endianness - a function that checks if
  *                  architecture is little endian
